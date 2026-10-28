@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bangla Probad BD — বাংলা প্রবাদ</title>
+<meta name="description" content="40 classic Bangla proverbs with meanings, favourites, proverb of the day and a meaning-match quiz. Fully offline.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <div>
+      <h1>Bangla Probad BD <span class="bn-inline">বাংলা প্রবাদ</span></h1>
+      <p id="tagline"></p>
+    </div>
+    <button id="langBtn" class="lang-btn" type="button">বাংলা</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="ofday" aria-labelledby="ofDayTitle">
+    <div>
+      <h2 id="ofDayTitle"></h2>
+      <p id="ofDayBn" class="bn big"></p>
+      <p id="ofDayTr" class="tr"></p>
+      <p id="ofDayEn"></p>
+      <p id="ofDayBnm" class="bn"></p>
+    </div>
+    <button id="ofDayBtn" class="primary" type="button">Details →</button>
+  </section>
+
+  <nav class="tabs" role="tablist">
+    <button id="tabBrowse" class="tab active" type="button">Browse</button>
+    <button id="tabQuiz" class="tab" type="button">Quiz</button>
+  </nav>
+
+  <section id="browseView">
+    <div class="controls">
+      <input id="search" type="search" autocomplete="off" aria-label="Search proverbs">
+      <label class="favcheck"><input id="favOnly" type="checkbox"> <span id="favOnlyLabel"></span></label>
+    </div>
+    <div id="chips" class="chips"></div>
+    <p id="empty" class="empty" style="display:none"></p>
+    <div id="grid" class="grid"></div>
+  </section>
+
+  <section id="quizView" style="display:none">
+    <div id="quizArea" class="quiz"></div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p id="footerText"></p>
+  <p class="tiny">Offline static site — your favourites stay in this browser only. No accounts, no tracking.</p>
+</footer>
+
+<div id="modal" class="modal" style="display:none" role="dialog" aria-modal="true">
+  <div class="sheet">
+    <button id="modalClose" class="x" type="button">Close</button>
+    <span id="dCat" class="cat"></span>
+    <h3 id="dBn" class="bn big"></h3>
+    <p id="dTr" class="tr"></p>
+    <p><strong id="dMeaningLabel"></strong> <span id="dEn"></span></p>
+    <p id="dBnm" class="bn"></p>
+    <p><strong id="dUseLabel"></strong> <span id="dUse"></span></p>
+    <div class="sheet-actions">
+      <button id="dFav" class="secondary" type="button">Favourite</button>
+      <button id="dCopy" class="secondary" type="button">Copy</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/proverbs.js"></script>
+<script src="js/logic.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

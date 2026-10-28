@@ -1,0 +1,52 @@
+// Bangla proverb bank: 40 classic proverbs, 8 per category.
+// Fields: id, bn (proverb), tr (romanized transliteration), en (English meaning),
+// bnm (short Bangla meaning), cat, use (when to use it, English).
+// Meanings are the standard, widely-understood senses of these folk sayings.
+const PROVERBS = [
+  // ---- Wisdom ----
+  { id: 1, bn: "অতি লোভে তাঁতি নষ্ট", tr: "Oti lobhe tãnti noshto", en: "Excessive greed ruins even skilled work.", bnm: "বেশি লোভ করলে নিজের কাজটাই নষ্ট হয়।", cat: "wisdom", use: "When someone's greed backfires and costs them what they already had." },
+  { id: 2, bn: "যেমন কর্ম তেমন ফল", tr: "Jemon kormo temon phol", en: "As you sow, so shall you reap.", bnm: "যেমন কাজ করবে, তেমন ফল পাবে।", cat: "wisdom", use: "When actions and their consequences clearly match." },
+  { id: 3, bn: "অল্প বিদ্যা ভয়ংকরী", tr: "Olpo bidya bhoyonkori", en: "A little learning is a dangerous thing.", bnm: "আধা জানা জ্ঞান বিপজ্জনক।", cat: "wisdom", use: "When someone half-knows a subject but acts like an expert." },
+  { id: 4, bn: "গাছে কাঁঠাল গোঁফে তেল", tr: "Gachhe kãnthal gõphe tel", en: "Counting chickens before they hatch.", bnm: "ফল পাকার আগেই লাভের হিসাব করা।", cat: "wisdom", use: "When someone celebrates a result before it actually exists." },
+  { id: 5, bn: "নাচতে না জানলে উঠান বাঁকা", tr: "Nachte na janle uthan bãnka", en: "A bad dancer blames the courtyard.", bnm: "নিজে না পারলে দোষ দেয় পরিবেশের।", cat: "wisdom", use: "When someone blames tools or circumstances for their own lack of skill." },
+  { id: 6, bn: "ঢাল নেই তলোয়ার নেই নিধিরাম সর্দার", tr: "Dhal nei toloar nei Nidhiram Sordar", en: "All title, no substance.", bnm: "নামে সর্দার, কাজে কিছুই নেই।", cat: "wisdom", use: "When someone boasts a big title with nothing to back it up." },
+  { id: 7, bn: "এক হাতে তালি বাজে না", tr: "Ek hate tali baje na", en: "It takes two to make a quarrel.", bnm: "ঝগড়া একা হয় না, দুই পক্ষ লাগে।", cat: "wisdom", use: "When a quarrel clearly needed both sides to happen." },
+  { id: 8, bn: "সাপও মরল লাঠিও ভাঙল না", tr: "Shap-o morlo lathi-o bhanglo na", en: "The snake died and the stick stayed whole: a clean solution with no damage.", bnm: "কাজও হলো, ক্ষতিও হলো না।", cat: "wisdom", use: "When a problem is solved neatly without collateral damage." },
+  // ---- Diligence ----
+  { id: 9, bn: "পরিশ্রম সৌভাগ্যের প্রসূতি", tr: "Porisrom soubhagger prosuti", en: "Industry is the mother of good fortune.", bnm: "পরিশ্রমই সৌভাগ্যের জন্ম দেয়।", cat: "diligence", use: "To encourage steady hard work as the real source of luck." },
+  { id: 10, bn: "কষ্ট না করলে কেষ্ট মেলে না", tr: "Koshto na korle Keshto mele na", en: "No pain, no gain.", bnm: "কষ্ট ছাড়া ভালো ফল মেলে না।", cat: "diligence", use: "When someone wants results without putting in effort." },
+  { id: 11, bn: "সময়ের এক ফোঁড় অসময়ের দশ ফোঁড়", tr: "Shomoyer ek phõr oshomoyer dosh phõr", en: "A stitch in time saves nine.", bnm: "সময়মতো একটু কাজ করলে পরে অনেক ঝামেলা বাঁচে।", cat: "diligence", use: "When fixing a small problem early prevents a big one later." },
+  { id: 12, bn: "ধীরে ধীরে পাথরও ক্ষয়ে যায়", tr: "Dhire dhire pathor-o khoye jay", en: "Slow and steady wears down even stone.", bnm: "ধৈর্য ধরে লেগে থাকলে কঠিন কাজও হয়।", cat: "diligence", use: "When persistence, not speed, is what finally works." },
+  { id: 13, bn: "বসে বসে খেলে রাজার ভাণ্ডারও ফুরায়", tr: "Boshe boshe khele rajar bhandar-o furay", en: "Idle spending empties even a king's treasury.", bnm: "শুধু খরচ করলে যত বড় সম্পদই ফুরিয়ে যায়।", cat: "diligence", use: "When someone spends without earning and wonders where it went." },
+  { id: 14, bn: "চেষ্টার অসাধ্য কিছু নেই", tr: "Cheshtar oshadhyo kichhu nei", en: "Nothing is impossible with effort.", bnm: "চেষ্টা করলে কোনো কাজই অসম্ভব নয়।", cat: "diligence", use: "To encourage someone facing a task that looks impossible." },
+  { id: 15, bn: "উদ্যোগী পুরুষের ভাগ্য সহায়", tr: "Udyogi purusher bhagyo shohay", en: "Fortune favours the industrious.", bnm: "যে উদ্যোগ নেয়, ভাগ্য তার পাশে থাকে।", cat: "diligence", use: "When initiative, not luck alone, leads to success." },
+  { id: 16, bn: "আজকের কাজ কালকে ফেলে রেখো না", tr: "Ajker kaj kalke fele rekho na", en: "Do not put off until tomorrow what you can do today.", bnm: "আজকের কাজ আজই সেরে ফেলো।", cat: "diligence", use: "When procrastination is about to create tomorrow's crisis." },
+  // ---- Caution ----
+  { id: 17, bn: "দুধ কলা দিয়ে কালসাপ পোষা", tr: "Dudh kola diye kalshap posha", en: "Feeding milk and bananas to a venomous snake: nourishing an enemy.", bnm: "শত্রুকে আদর করে নিজের বিপদ ডেকে আনা।", cat: "caution", use: "When kindness is wasted on someone who will use it against you." },
+  { id: 18, bn: "ঘরের শত্রু বিভীষণ", tr: "Ghorer shotru Bibhishon", en: "The enemy within the house.", bnm: "নিজের লোকই যখন ক্ষতি করে।", cat: "caution", use: "When betrayal comes from inside one's own circle." },
+  { id: 19, bn: "লোভে পাপ পাপে মৃত্যু", tr: "Lobhe pap pape mrityu", en: "Greed leads to sin, and sin to ruin.", bnm: "লোভ থেকে পাপ, পাপ থেকে ধ্বংস।", cat: "caution", use: "As a warning that unchecked greed ends badly." },
+  { id: 20, bn: "মিষ্টি কথায় চিঁড়ে ভেজে না", tr: "Mishti kothay chĩre bheje na", en: "Fine words butter no parsnips: sweet talk alone gets nothing done.", bnm: "শুধু মিষ্টি কথায় কাজ হয় না।", cat: "caution", use: "When flattery is offered instead of real help." },
+  { id: 21, bn: "চোখের আড়াল হলেই মনের আড়াল", tr: "Chokher aral holei moner aral", en: "Out of sight, out of mind.", bnm: "চোখের আড়াল হলে মন থেকেও সরে যায়।", cat: "caution", use: "When absence quietly fades a relationship or a promise." },
+  { id: 22, bn: "মশা মারতে কামান দাগা", tr: "Moshar marte kaman daga", en: "Firing a cannon to kill a mosquito: wild overkill.", bnm: "ছোট কাজে বিশাল আয়োজন করা।", cat: "caution", use: "When a tiny problem gets a hugely disproportionate response." },
+  { id: 23, bn: "জলে কুমির ডাঙায় বাঘ", tr: "Jole kumir dangay bagh", en: "A crocodile in the water, a tiger on land: danger on both sides.", bnm: "দুই দিকেই বিপদ, পালাবার পথ নেই।", cat: "caution", use: "When someone is caught between two dangers." },
+  { id: 24, bn: "কান টানলে মাথা আসে", tr: "Kan tanle matha ashe", en: "Pull the ear and the head follows: one thing leads to another.", bnm: "একটা ধরলে বাকিগুলোও চলে আসে।", cat: "caution", use: "When one small clue unravels a whole chain of events." },
+  // ---- Money ----
+  { id: 25, bn: "টাকা ছাড়া বাঘের দুধও মেলে না", tr: "Taka chhara bagher dudh-o mele na", en: "Without money, not even tiger's milk can be had.", bnm: "টাকা ছাড়া কঠিন জিনিসও পাওয়া যায় না।", cat: "money", use: "When money turns out to be the deciding factor." },
+  { id: 26, bn: "যত গুড় তত মিষ্টি", tr: "Joto gur toto mishti", en: "The more jaggery, the sweeter: you get what you pay for.", bnm: "যত দাম দেবে, তত ভালো জিনিস পাবে।", cat: "money", use: "When cheap choices produce predictably poor results." },
+  { id: 27, bn: "হাতের লক্ষ্মী পায়ে ঠেলা", tr: "Hater Lokkhi paye thela", en: "Kicking away the fortune already in your hand.", bnm: "হাতের ভালো সুযোগ পায়ে ঠেলে দেওয়া।", cat: "money", use: "When someone rejects a good opportunity already within reach." },
+  { id: 28, bn: "অভাবে স্বভাব নষ্ট", tr: "Obhabe shobhab noshto", en: "Poverty corrupts character.", bnm: "অভাব মানুষের স্বভাব বদলে দেয়।", cat: "money", use: "When hardship pushes someone toward behaviour they would otherwise avoid." },
+  { id: 29, bn: "ধার করে ঘি খাওয়া", tr: "Dhar kore ghi khaoa", en: "Eating ghee on borrowed money: living beyond one's means.", bnm: "ধার করে বিলাসিতা করা।", cat: "money", use: "When someone funds a lavish lifestyle with debt." },
+  { id: 30, bn: "টাকায় টাকা আনে", tr: "Takay taka ane", en: "Money begets money.", bnm: "টাকা খাটালে টাকা বাড়ে।", cat: "money", use: "When an investment or savings habit starts compounding." },
+  { id: 31, bn: "গরিবের ঘোড়া রোগ", tr: "Goriber ghora rog", en: "A poor man's horse disease: tastes far beyond one's means.", bnm: "সাধ্যের বাইরে শখ করা।", cat: "money", use: "When someone chases luxuries their income cannot support." },
+  { id: 32, bn: "মাগনা পেলে আলকাতরাও মিষ্টি", tr: "Magna pele alkatrao mishti", en: "If it is free, even tar tastes sweet.", bnm: "বিনা পয়সায় পেলে সবই ভালো লাগে।", cat: "money", use: "When people love something mainly because it costs nothing." },
+  // ---- Character ----
+  { id: 33, bn: "সৎ সঙ্গে স্বর্গবাস অসৎ সঙ্গে সর্বনাশ", tr: "Shot shonge shorgobash oshoth shonge shorbonash", en: "Good company is heaven; bad company is ruin.", bnm: "ভালো সঙ্গ স্বর্গ, খারাপ সঙ্গ সর্বনাশ।", cat: "character", use: "When the company someone keeps shapes their fate." },
+  { id: 34, bn: "বন্ধু চেনা যায় বিপদে", tr: "Bondhu chena jay bipode", en: "A friend in need is a friend indeed.", bnm: "বিপদেই আসল বন্ধু চেনা যায়।", cat: "character", use: "When hardship reveals who the real friends are." },
+  { id: 35, bn: "মুখে মধু অন্তরে বিষ", tr: "Mukhe modhu ontore bish", en: "Honey on the tongue, poison inside.", bnm: "মুখে মিষ্টি, মনে বিষ।", cat: "character", use: "When someone speaks sweetly while meaning harm." },
+  { id: 36, bn: "চাচা আপন প্রাণ বাঁচা", tr: "Chacha apon pran bãncha", en: "Each person saves his own life first.", bnm: "বিপদে সবাই আগে নিজেকে বাঁচায়।", cat: "character", use: "When self-preservation wins over loyalty in a crisis." },
+  { id: 37, bn: "মানুষ চেনা যায় ব্যবহারে", tr: "Manush chena jay byabohare", en: "A person is known by their conduct.", bnm: "ব্যবহার দেখেই মানুষ চেনা যায়।", cat: "character", use: "When manners reveal more than words or wealth." },
+  { id: 38, bn: "বাঘের বাচ্চা বাঘই হয়", tr: "Bagher bachcha bagh-i hoy", en: "A tiger's cub is a tiger: like father, like son.", bnm: "বাবার গুণ ছেলের মধ্যেও থাকে।", cat: "character", use: "When a child clearly inherits a parent's traits." },
+  { id: 39, bn: "কুকুরের লেজ কখনো সোজা হয় না", tr: "Kukurer lej kokhono shoja hoy na", en: "A dog's tail never straightens: old habits die hard.", bnm: "পুরনো অভ্যাস সহজে বদলায় না।", cat: "character", use: "When someone returns to an old habit despite every effort." },
+  { id: 40, bn: "কাকের বাসায় কোকিলের ডিম", tr: "Kaker bashay kokiler dim", en: "A cuckoo's egg in a crow's nest: an imposter in borrowed place.", bnm: "পরের জায়গায় নিজের জিনিস বসানো।", cat: "character", use: "When something out of place quietly takes over." }
+];
+if (typeof module !== "undefined") module.exports = { PROVERBS };
